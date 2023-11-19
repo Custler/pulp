@@ -38,7 +38,8 @@ simc:
 
 opt:
 ifndef IPAPPROX
-	$(VOPT) +acc=npr -o vopt_tb tb_pulp -floatparameters+tb_pulp -work work
+#	$(VOPT) +acc=npr -o vopt_tb tb_pulp -floatparameters+tb_pulp -work work
+	$(VOPT) +acc=npr -o vopt_tb tb_pulp -work work
 else
 	$(mkfile_path)/tcl_files/rtl_vopt.tcl
 endif
@@ -54,7 +55,8 @@ endif
 lib:
 ifndef IPAPPROX
 	@$(VLIB) work
-	@chmod +w modelsim.ini
+#	@touch modelsim.ini
+#	@chmod +w modelsim.ini
 	$(VMAP) work $(mkfile_path)/work
 else
 	@make --no-print-directory -f $(mkfile_path)/vcompile/ips.mk lib
@@ -71,4 +73,5 @@ else
 endif
 	@touch modelsim.ini
 	@chmod +w modelsim.ini
-	rm modelsim.ini
+	@rm modelsim.ini
+	
